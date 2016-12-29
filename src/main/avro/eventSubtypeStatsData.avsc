@@ -1,0 +1,11 @@
+{"namespace": "com.refactorlabs.cs378.assign8",
+ "type": "record",
+ "name": "EventSubtypeStatisticsData",
+ "fields": [
+     {"name": "session_count",  "type": "long", "default": 1},
+     {"name": "total_count",    "type": "long", "default": 1},
+     {"name": "sum_of_squares", "type": "long", "default": 1},
+     {"name": "mean",           "type": "double", "default": 0.0},
+     {"name": "variance",       "type": "double", "default": 0.0}
+ ]
+}

@@ -1,0 +1,72 @@
+{"namespace": "com.refactorlabs.cs378.assign5",
+ "type": "record",
+ "name": "UserSessionData",
+ "fields": [
+      {"name": "user_id", "type": "string"},
+      {"name": "events",
+       "type": {"type": "array",
+                "items": {"type": "record",
+                          "name": "Event",
+                          "fields": [
+                              {"name": "event_type",
+                               "type": {"type": "enum",
+                                        "name": "EventType",
+                                        "symbols": [ "CHANGE", "CLICK", "DISPLAY",
+                                                     "EDIT", "SHOW", "VISIT"
+						     			 ]
+                                       }
+                               },
+                              {"name": "event_subtype",
+                               "type":  ["null", {"type": "enum", "name": "EventSubtype",
+                                        "symbols": [ "CONTACT_FORM", "ALTERNATIVE", "CONTACT_BUTTON", "FEATURES",
+                                                "GET_DIRECTIONS", "VEHICLE_HISTORY", "BADGE_DETAIL", "PHOTO_MODAL",
+                                                "BADGES", "MARKET_REPORT" ]
+                                       }],
+                                "default" : null
+                              },
+                              {"name": "page", "type": ["null", "string"], "default": null}, 
+                              {"name": "referring_domain", "type": "string", "default": null},
+                              {"name": "event_timestamp", "type": "string", "default": null},
+                              {"name": "city", "type": "string", "default": ""},
+                              {"name": "vin", "type": "string", "default": ""},
+                              {"name": "vehicle_condition", "type": {"type" : "enum",
+                               								"name": "VehicleCondition",
+                               								"symbols":["NEW","USED", "CPO"]
+                               		}
+                              },
+                              {"name": "year", "type": "int", "default": 0},
+                              {"name": "make", "type": "string", "default": ""},
+                              {"name": "model", "type": "string", "default": ""},                                                                                                                                         
+                              {"name": "trim", "type": "string", "default": ""},        
+                              {"name": "body_style",
+                               "type": [{
+                                       
+                                        "type": "enum",
+                                        "name": "BodyStyle",
+                                        "symbols": [ "CONVERTIBLE", "COUPE", "HATCHBACK",
+                                                     "MINIVAN", "PICKUP", "SUV959", "SEDAN",
+                                                     "VAN", "WAGON", "CHASSIS"
+						     			 ]
+                                       },
+                                       "null"],
+                                       "default" : "NULL"
+                               },
+                               {"name": "cab_style",
+                                "type":  ["null", {"type": "enum", "name": "CabStyle",
+                                "symbols": [ "CREW_CAB" ,"EXTENDED_CAB" , "REGULAR_CAB" ]
+                                }],
+                                "default" : null
+                                },
+
+
+                               {"name": "price", "type": "double", "default": 0.0},
+                               {"name": "mileage", "type": "int", "default": 0},
+                              {"name": "image_count", "type": "int", "default": 0},
+                              {"name": "carfax_free_report", "type": "boolean", "default": false},                          
+                            {"name": "features", "type" : ["null",{"type" : "array", "items": "string"}],"default":null}
+                                ]
+                          }
+                }
+       }
+   ]
+ }

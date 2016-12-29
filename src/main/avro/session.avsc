@@ -1,0 +1,62 @@
+{"namespace": "com.refactorlabs.cs378.assign7",
+ "type": "record",
+ "name": "Session",
+ "fields": [
+      {"name": "user_id", "type": "string"},
+      {"name": "events",
+       "type": {"type": "array",
+                "items": {"type": "record",
+                          "name": "Event",
+                          "fields": [
+                              {"name": "event_type",
+                               "type": {"type": "enum",
+                                        "name": "EventType",
+                                        "symbols": [ "CHANGE", "CLICK", "DISPLAY",
+                                                     "EDIT", "SHOW", "VISIT" ]
+                                       }
+                               },
+                              {"name": "event_subtype",
+                               "type": {"type": "enum", "name": "EventSubtype",
+                                        "symbols": [ "ALTERNATIVE", "BADGES", "BADGE_DETAIL", "CONTACT_BUTTON",
+                                          "CONTACT_FORM", "FEATURES", "GET_DIRECTIONS", "MARKET_REPORT",
+                                          "PHOTO_MODAL", "VEHICLE_HISTORY" ]
+                                       }
+                              },
+                              {"name": "event_time", "type": "string" },
+
+                            {"name": "page", "type": [ "null", "string"] },
+                            {"name": "referring_domain", "type": [ "null", "string"], "default": null },
+                            {"name": "city", "type": [ "null", "string"], "default": null },
+                            {"name": "vin", "type": [ "null", "string"], "default": null },
+                            {"name": "condition", "type": {"type": "enum", "name": "Condition",
+                              "symbols": [ "New", "Used", "CPO" ] },
+                              "default": "Used"},
+                            {"name": "year", "type": [ "null", "int" ], "default": null },
+                            {"name": "make", "type": "string" },
+                            {"name": "model", "type": "string" },
+                            {"name": "trim", "type": [ "null", "string"], "default": null },
+                            {"name": "body_style", "type": [ "null",
+                              {"type": "enum", "name": "BodyStyle",
+                                "symbols": [ "Chassis", "Convertible", "Coupe",
+                                  "Hatchback", "Minivan", "Pickup",
+                                  "SUV", "Sedan", "Van", "Wagon" ]
+                              } ],
+                              "default": null },
+                            {"name": "cab_style", "type": [ "null",
+                              {"type": "enum", "name": "CabStyle",
+                                "symbols": [ "Regular", "Extended", "Crew"]
+                              } ],
+                              "default": null },
+                            {"name": "price", "type": [ "null", "float" ], "default": null },
+                            {"name": "mileage", "type": [ "null", "int" ], "default": null },
+                            {"name": "image_count", "type": "int", "default": 0 },
+                            {"name": "free_carfax_report", "type": "boolean", "default": false },
+                            {"name": "features", "type": {"type": "array", "items": "string" }}
+
+                            ]
+                          }
+                }
+       }
+   ]
+ }
+

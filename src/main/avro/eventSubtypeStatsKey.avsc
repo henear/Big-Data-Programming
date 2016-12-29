@@ -1,0 +1,8 @@
+{"namespace": "com.refactorlabs.cs378.assign8",
+ "type": "record",
+ "name": "EventSubtypeStatisticsKey",
+ "fields": [
+     {"name": "session_type",  "type": "string", "default": "any"},
+     {"name": "event_subtype", "type": "string", "default": "any"}
+ ]
+}

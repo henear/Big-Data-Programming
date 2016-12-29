@@ -1,0 +1,14 @@
+{"namespace": "com.refactorlabs.cs378.assign6",
+  "type": "record",
+  "name": "VinImpressionCounts",
+  "fields": [
+    // Fields from user session
+    {"name": "unique_users",         "type": "long", "default": 0 },
+    {"name": "clicks",               "type": [ "null", {"type": "map", "values": "long" } ],
+                                     "default": null },
+    {"name": "edit_contact_form",    "type": "long", "default": 0 },
+    // Fields from marketplaces
+    {"name": "marketplace_srps",     "type": "long", "default": 0 },
+    {"name": "marketplace_vdps",     "type": "long", "default": 0 }
+  ]
+}
