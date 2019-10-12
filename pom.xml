@@ -25,7 +25,7 @@
         <!-- mockito version -->
         <mockito.version>1.9.5</mockito.version>
         <!-- spark version -->
-        <spark.version>2.0.0</spark.version>
+        <spark.version>2.3.3</spark.version>
     </properties>
 
     <developers>
