@@ -7,7 +7,7 @@
     <groupId>com.refactorlabs.cs378</groupId>
     <artifactId>bdp-spark</artifactId>
     <packaging>jar</packaging>
-    <version>0.9</version>
+    <version>1.0</version>
 
     <description>Java code for CS 378 - Big Data Programming</description>
 
@@ -30,9 +30,9 @@
 
     <developers>
         <developer>
-            <name>David Franke</name>
-            <email>dfranke@cs.utexas.edu</email>
-            <id>dfranke</id>
+            <name>Haocheng An</name>
+            <email>haochengan@utexas.edu</email>
+            <id>ha8886</id>
         </developer>
     </developers>
 
@@ -101,6 +101,18 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
             <version>${spark.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-java</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-flume_2.11</artifactId>
+            <version>2.0.0</version>
         </dependency>
 
     </dependencies>

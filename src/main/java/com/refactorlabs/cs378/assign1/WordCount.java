@@ -14,6 +14,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
 import java.io.IOException;
+import java.nio.channels.Channel;
 import java.util.StringTokenizer;
 
 /**
@@ -50,6 +51,7 @@ public class WordCount {
 		@Override
 		public void map(LongWritable key, Text value, Context context)
 				throws IOException, InterruptedException {
+			System.out.println("in mapper");
 			String line = value.toString();
 			StringTokenizer tokenizer = new StringTokenizer(line);
 
@@ -97,8 +99,20 @@ public class WordCount {
 	 * job and waits for it to complete.
 	 */
 	public static void main(String[] args) throws Exception {
+		Channel c = new Channel() {
+			@Override
+			public boolean isOpen() {
+				return false;
+			}
+
+			@Override
+			public void close() throws IOException {
+
+			}
+		};
 		Configuration conf = new Configuration();
 		String[] appArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
+
 
 		Job job = Job.getInstance(conf, "WordCount");
 		// Identify the JAR file to replicate to all machines.
