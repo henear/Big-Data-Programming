@@ -19,8 +19,8 @@
         <avro.version>1.11.4</avro.version>
         <!-- guava collections version -->
         <guava.version>33.4.8-jre</guava.version>
-        <!-- mockito version -->
-        <mockito.version>5.16.1</mockito.version>
+        <!-- mrunit version -->
+        <mrunit.version>1.1.0</mrunit.version>
         <!-- spark version -->
         <spark.version>3.5.6</spark.version>
         <spark.scala.binary.version>2.12</spark.scala.binary.version>
@@ -80,10 +80,17 @@
         </dependency>
 
         <dependency>
-            <!-- Extra dependencies: objenesis & hamcrest -->
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.mrunit</groupId>
+            <artifactId>mrunit</artifactId>
+            <version>${mrunit.version}</version>
+            <classifier>hadoop2</classifier>
             <scope>test</scope>
         </dependency>
 
@@ -111,6 +118,15 @@
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-resources-plugin</artifactId>
               <version>2.5</version>
+          </plugin>
+
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>3.5.4</version>
+              <configuration>
+                  <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
+              </configuration>
           </plugin>
 
           <plugin>
