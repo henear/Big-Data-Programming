@@ -87,16 +87,16 @@ public class InvertedIndex {
 			}
 		};
 
-		Function<String, Iterable<String>> sortVerseFunction = 
-				new Function<String, Iterable<String>>() {
-			public Iterable<String> call(String listofVerse) throws Exception {
+		FlatMapFunction<String, String> sortVerseFunction =
+				new FlatMapFunction<String, String>() {
+			public Iterator<String> call(String listofVerse) throws Exception {
 				String[] verseArray = listofVerse.split(",");
 				List<String> verseList = Arrays.asList(verseArray);
 				Collections.sort(verseList, new myComparator());
 				String temp = verseList.toString();
 				ArrayList<String> t = new ArrayList<>();
 				t.add(temp);
-				return t;
+				return t.iterator();
 			}
 		};
 		JavaRDD<String> words = input.flatMap(splitFunction);

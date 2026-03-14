@@ -63,7 +63,7 @@
       <plugin>
         <groupId>org.apache.avro</groupId>
         <artifactId>avro-maven-plugin</artifactId>
-        <version>${avro.version}</version>
+        <version>1.8.1</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
@@ -85,24 +85,36 @@
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-common</artifactId>
-      <version>3.2.3</version>
+      <version>3.4.2</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
-          <artifactId>javax.activation-api</artifactId>
-          <groupId>javax.activation</groupId>
+          <artifactId>hadoop-shaded-protobuf_3_25</artifactId>
+          <groupId>org.apache.hadoop.thirdparty</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>jetty-server</artifactId>
-          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>hadoop-annotations</artifactId>
+          <groupId>org.apache.hadoop</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>jetty-util</artifactId>
-          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>hadoop-shaded-guava</artifactId>
+          <groupId>org.apache.hadoop.thirdparty</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>jetty-servlet</artifactId>
-          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>commons-cli</artifactId>
+          <groupId>commons-cli</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>httpclient</artifactId>
+          <groupId>org.apache.httpcomponents</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>commons-net</artifactId>
+          <groupId>commons-net</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jakarta.activation-api</artifactId>
+          <groupId>jakarta.activation</groupId>
         </exclusion>
         <exclusion>
           <artifactId>jetty-webapp</artifactId>
@@ -113,20 +125,36 @@
           <groupId>javax.servlet.jsp</groupId>
         </exclusion>
         <exclusion>
+          <artifactId>jersey-core</artifactId>
+          <groupId>com.sun.jersey</groupId>
+        </exclusion>
+        <exclusion>
           <artifactId>jersey-servlet</artifactId>
           <groupId>com.sun.jersey</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>commons-beanutils</artifactId>
-          <groupId>commons-beanutils</groupId>
+          <artifactId>jersey-json</artifactId>
+          <groupId>com.github.pjfanning</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jettison</artifactId>
+          <groupId>org.codehaus.jettison</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jersey-server</artifactId>
+          <groupId>com.sun.jersey</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>reload4j</artifactId>
+          <groupId>ch.qos.reload4j</groupId>
         </exclusion>
         <exclusion>
           <artifactId>commons-configuration2</artifactId>
           <groupId>org.apache.commons</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>commons-text</artifactId>
-          <groupId>org.apache.commons</groupId>
+          <artifactId>slf4j-reload4j</artifactId>
+          <groupId>org.slf4j</groupId>
         </exclusion>
         <exclusion>
           <artifactId>re2j</artifactId>
@@ -141,11 +169,11 @@
           <groupId>com.jcraft</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>htrace-core4</artifactId>
-          <groupId>org.apache.htrace</groupId>
+          <artifactId>bcprov-jdk18on</artifactId>
+          <groupId>org.bouncycastle</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>kerb-simplekdc</artifactId>
+          <artifactId>kerb-core</artifactId>
           <groupId>org.apache.kerby</groupId>
         </exclusion>
         <exclusion>
@@ -165,25 +193,60 @@
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-mapreduce-client-core</artifactId>
-      <version>2.7.2</version>
+      <version>3.4.2</version>
       <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>hadoop-yarn-client</artifactId>
+          <groupId>org.apache.hadoop</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>hadoop-yarn-common</artifactId>
+          <groupId>org.apache.hadoop</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>hadoop-hdfs-client</artifactId>
+          <groupId>org.apache.hadoop</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>guice-servlet</artifactId>
+          <groupId>com.google.inject.extensions</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>slf4j-reload4j</artifactId>
+          <groupId>org.slf4j</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>hadoop-annotations</artifactId>
+          <groupId>org.apache.hadoop</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>1.9.5</version>
+      <version>5.16.1</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>byte-buddy</artifactId>
+          <groupId>net.bytebuddy</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>byte-buddy-agent</artifactId>
+          <groupId>net.bytebuddy</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
   <properties>
-    <spark.version>2.3.3</spark.version>
-    <hadoop-core.version>2.7.2</hadoop-core.version>
+    <spark.version>3.5.6</spark.version>
+    <spark.scala.binary.version>2.12</spark.scala.binary.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <avro.version>1.8.1</avro.version>
-    <mrunit.version>1.1.0</mrunit.version>
-    <mockito.version>1.9.5</mockito.version>
-    <guava.version>19.0</guava.version>
-    <hadoop-common.version>3.2.3</hadoop-common.version>
+    <avro.version>1.11.4</avro.version>
+    <mockito.version>5.16.1</mockito.version>
+    <guava.version>33.4.8-jre</guava.version>
+    <hadoop.version>3.4.2</hadoop.version>
   </properties>
 </project>
 

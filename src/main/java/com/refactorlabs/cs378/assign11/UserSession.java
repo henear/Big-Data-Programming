@@ -1,7 +1,6 @@
 package com.refactorlabs.cs378.assign11;
 
 
-import org.apache.spark.Accumulator;
 import org.apache.spark.Partitioner;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
@@ -10,6 +9,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.PairFunction;
+import org.apache.spark.util.LongAccumulator;
 
 import scala.Tuple2;
 
@@ -40,11 +40,11 @@ public class UserSession implements java.io.Serializable{
 		JavaRDD<String> input = sc.textFile(inputFilename);
 
 		// Create Accumulators.
-		Accumulator<Integer> filteringEventCount = sc.accumulator(0);
-		Accumulator<Integer> uniqueEventCount = sc.accumulator(0);
-		Accumulator<Integer> sessionCount = sc.accumulator(0);
-		Accumulator<Integer> totalshowerCount = sc.accumulator(0);
-		Accumulator<Integer> discardshowerCount = sc.accumulator(0);
+		LongAccumulator filteringEventCount = sc.sc().longAccumulator();
+		LongAccumulator uniqueEventCount = sc.sc().longAccumulator();
+		LongAccumulator sessionCount = sc.sc().longAccumulator();
+		LongAccumulator totalshowerCount = sc.sc().longAccumulator();
+		LongAccumulator discardshowerCount = sc.sc().longAccumulator();
 		Set<Tuple2<String, String>> uniqueSessions = new HashSet<Tuple2<String, String>>();
 		Set<String> eventSet = new HashSet<String>();
 		

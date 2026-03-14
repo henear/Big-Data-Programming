@@ -14,18 +14,16 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- AWS designation: - - emr 5.0.0 -->
-        <hadoop-common.version>3.2.3</hadoop-common.version>
-        <hadoop-core.version>2.7.2</hadoop-core.version>
+        <hadoop.version>3.4.2</hadoop.version>
         <!-- AVRO version -->
-        <avro.version>1.8.1</avro.version>
+        <avro.version>1.11.4</avro.version>
         <!-- guava collections version -->
-        <guava.version>19.0</guava.version>
-        <!-- mrunit version -->
-        <mrunit.version>1.1.0</mrunit.version>
+        <guava.version>33.4.8-jre</guava.version>
         <!-- mockito version -->
-        <mockito.version>1.9.5</mockito.version>
+        <mockito.version>5.16.1</mockito.version>
         <!-- spark version -->
-        <spark.version>2.3.3</spark.version>
+        <spark.version>3.5.6</spark.version>
+        <spark.scala.binary.version>2.12</spark.scala.binary.version>
     </properties>
 
     <developers>
@@ -39,27 +37,27 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.11</artifactId>
+            <artifactId>spark-core_${spark.scala.binary.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.11</artifactId>
-            <version>2.0.2</version>
+            <artifactId>spark-sql_${spark.scala.binary.version}</artifactId>
+            <version>${spark.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
-            <version>${hadoop-common.version}</version>
+            <version>${hadoop.version}</version>
             <scope>provided</scope>
         </dependency>
         
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-mapreduce-client-core</artifactId>
-            <version>${hadoop-core.version}</version>
+            <version>${hadoop.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -73,7 +71,6 @@
             <groupId>org.apache.avro</groupId>
             <artifactId>avro-mapred</artifactId>
             <version>${avro.version}</version>
-            <classifier>hadoop2</classifier>
         </dependency>
 
         <dependency>
@@ -83,36 +80,11 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.mrunit</groupId>
-            <artifactId>mrunit</artifactId>
-            <version>${mrunit.version}</version>
-            <classifier>hadoop2</classifier>
-        </dependency>
-
-        <dependency>
             <!-- Extra dependencies: objenesis & hamcrest -->
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.11</artifactId>
-            <version>${spark.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
-            <version>1.8.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-flume_2.11</artifactId>
-            <version>2.0.0</version>
         </dependency>
 
     </dependencies>
@@ -183,7 +155,7 @@
           <plugin>
               <groupId>org.apache.avro</groupId>
               <artifactId>avro-maven-plugin</artifactId>
-              <version>${avro.version}</version>
+              <version>1.8.1</version>
               <executions>
                   <execution>
                       <phase>generate-sources</phase>
